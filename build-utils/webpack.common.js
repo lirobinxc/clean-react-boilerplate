@@ -1,5 +1,4 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -15,20 +14,25 @@ module.exports = {
         test: /\.(scss|css)$/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Clean React Project w/ Webpack + Babel',
+      title: 'Generic Title Here',
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
   ],
   output: {
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, '..', './dist'),
-    filename: 'bundle.js',
+    // filename: 'bundle.js',
+    clean: true,
   },
 };
