@@ -7,3 +7,11 @@ Includes Webpack & Babel
 ```
 npm start
 ```
+
+## Build (with Webpack Bundle Analyzer)
+
+```
+npm run build:analyze
+```
+
+Open the generated `report.html` in the `/dist` folder.
